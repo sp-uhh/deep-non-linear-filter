@@ -2,8 +2,8 @@
 
 This repository contains code for the papers 
 
-Kristina Tesch, Nils-Hendrik Mohrmann, and Timo Gerkmann, "On the Role of Spatial, Spectral, and Temporal Processing for DNN-based Non-linear Multi-channel Speech Enhancement", accepted at Interspeech 2022, [[arxiv]](https://arxiv.org/abs/2206.11181), [[audio examples]](https://www.inf.uni-hamburg.de/en/inst/ab/sp/publications/interspeech2022-deepmcfilter.html)
+[1] Kristina Tesch, Nils-Hendrik Mohrmann, and Timo Gerkmann, "On the Role of Spatial, Spectral, and Temporal Processing for DNN-based Non-linear Multi-channel Speech Enhancement", Proceedings of Interspeech, pp. 2908-2912, 2022, [[arxiv]](https://arxiv.org/abs/2206.11181), [[audio examples]](https://www.inf.uni-hamburg.de/en/inst/ab/sp/publications/interspeech2022-deepmcfilter.html)
 
-and 
+[2] Kristina Tesch and Timo Gerkmann, "Insights into Deep Non-linear Filters for Improved Multi-channel Speech Enhancement", IEEE/ACM Transactions of Audio, Speech and Language Processing, vol 31. pp.563-575, 2023, [[audio examples]](https://www.inf.uni-hamburg.de/en/inst/ab/sp/publications/tasl2022-deepmcfilter.html)
 
-Kristina Tesch and Timo Gerkmann, "Insights into Deep Non-linear Filters for Improved Multi-channel Speech Enhancement", submitted to Transactions of Audio, Speech and Language Processing, [[audio examples]](https://www.inf.uni-hamburg.de/en/inst/ab/sp/publications/tasl2022-deepmcfilter.html)
+[3] Kristina Tesch and Timo Gerkmann, "spatially Selective Deep Non-linear filters for Speaker Extraction", accepted for ICASSP 2023, [[audio examples]](https://www.inf.uni-hamburg.de/en/inst/ab/sp/publications/icassp2023-spatiallyselective)
