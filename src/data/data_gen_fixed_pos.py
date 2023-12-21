@@ -26,7 +26,7 @@ The code in this file was partially written by Nils Mohrmann.
 """
 
 # WSJ0 dataset path
-WSJ0_PATH = "/data/exchange/wsj0/CSR-1-WSJ-0/WAV/wsj0"
+WSJ0_PATH = "/path/to/wsj0/CSR-1-WSJ-0/WAV/wsj0"
 # Path where to save the simulated data
 SIM_DATA_PATH = "./prep/"
 
@@ -398,11 +398,11 @@ if __name__ == '__main__':
                           WSJ0_PATH,
                           n_interfering_speakers=5,
                           n_channels=3,
-                          num_files={'train': 60, 'val': 10, 'test': 6},
+                          num_files={'train': 6000, 'val': 1000, 'test': 600},
                           reverb=True,
                           target_angle=0,
                           rt60_min=0.2,
                           rt60_max=0.5,
                           snr_min=np.nan,
                           snr_max=5,
-                          side_room=20)
+                          side_room=15)
