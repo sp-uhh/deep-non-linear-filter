@@ -21,7 +21,7 @@ class HDF5DataModule(pl.LightningDataModule):
                  fs: int = 16000
                  ):
         """
-        Init the data module for the simulated CHiME3 dataset.
+        Init the data module for the simulated mixture dataset.
 
         :param n_channels: number of channels in the microphone array (must be smaller or equal to prep_files)
         :param batch_size: the batch size
