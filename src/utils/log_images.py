@@ -19,7 +19,7 @@ def make_image_grid(image_batch: torch.Tensor, vmin: Union[float, None], vmax: U
     :param n_img_per_row: number of images per row
     """
 
-    image_batch = image_batch[:num_images].cpu().detach().numpy()
+    image_batch = image_batch[:num_images if num_images > 0 else len(image_batch)].cpu().detach().numpy()
 
     def rgba_to_rgb(rgba):
         """
