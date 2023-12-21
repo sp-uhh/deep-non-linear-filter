@@ -152,8 +152,6 @@ class FTJNF(nn.Module):
     and the other LSTM uses the time-dimension as input.
     """
     def __init__(self,
-                 n_time_steps: int,
-                 n_freqs: int,
                  n_channels: int,
                  n_lstm_hidden1: int = 512,
                  n_lstm_hidden2: int = 128,
@@ -163,12 +161,10 @@ class FTJNF(nn.Module):
                  output_activation: Literal['sigmoid', 'tanh', 'linear'] = 'tanh', 
                  dropout: float = 0,
                  append_freq_idx: bool = False,
-                 permute_freqs: bool = False,):
+                 permute_freqs: bool = False):
         """
         Initialize model.
 
-        :param n_time_steps: number of STFT time frames in the input signal
-        :param n_freqs: number of STFT frequency bins in the input signal
         :param n_channels: number of channel in the input signal
         :param n_lstm_hidden1: number of LSTM units in the first LSTM layer
         :param n_lstm_hidden2: number of LSTM units in the second LSTM layer
@@ -180,8 +176,6 @@ class FTJNF(nn.Module):
         """
         super(FTJNF, self).__init__()
 
-        self.n_time_steps = n_time_steps
-        self.n_freqs = n_freqs
         self.n_channels = n_channels
         self.n_lstm_hidden1 = n_lstm_hidden1
         self.n_lstm_hidden2 = n_lstm_hidden2

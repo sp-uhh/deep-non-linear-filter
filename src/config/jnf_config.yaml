@@ -1,0 +1,49 @@
+
+seed: 123
+
+data:
+  n_channels: 3
+  batch_size: 2
+  prep_files: {
+                data: ./data/prep/prep_mix_ch3_sp5_small.hdf5,
+                meta: ./data/prep/prep_mix_meta_ch3_sp5_small.json,
+              }
+  dry_target: True
+  snr_range: []
+  meta_frame_length: 48000
+  stft_length_samples: 512
+  stft_shift_samples: 256
+  n_workers: 10
+
+network:
+  n_channels: 3
+  n_lstm_hidden1: 256
+  n_lstm_hidden2: 128
+  bidirectional: True
+  freq_first: True
+  output_type: 'CRM'
+  output_activation: 'tanh'
+  append_freq_idx: False
+  permute_freqs: False
+  dropout: 0
+
+experiment:
+  learning_rate: 0.001
+  weight_decay: 0
+  loss_alpha: 10
+  cirm_comp_K: 1
+  cirm_comp_C: 1
+  reference_channel: 0
+
+training:
+  max_epochs: 250
+  gradient_clip_val: 0
+  gradient_clip_algorithm: value
+  strategy: ddp
+  accelerator: gpu
+  devices: 1
+
+
+logging:
+  tb_log_dir: "../logs/tb_logs"
+  ckpt_dir: "../logs/ckpts"
