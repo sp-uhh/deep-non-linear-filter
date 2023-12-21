@@ -11,3 +11,9 @@ This repository contains code for the papers
 [4] Kristina Tesch and Timo Gerkmann, "Multi-channel Speech Separation Using Spatially Selective Deep Non-linear Filters", IEEE/ACM Transactions of Audio, Speech and Language Processing, vol. 32, pp. 542-553, 2024 [[audio examples]](https://www.inf.uni-hamburg.de/en/inst/ab/sp/publications/tasl2023-ssf-vs-ds.html)
 
 Take a look at a video of our real-time multi-channel enhancement demo: [http://uhh.de/inf-sp-jnf-demo](http://uhh.de/inf-sp-jnf-demo)
+
+## How to train
+
+1. Prepare a dataset by running ```data_gen_fixed_pos.py```.
+2. Prepare a config file. Examples can be found in the config folder.
+3. Run the training script in the scripts folder (replace the path to your config file). 
