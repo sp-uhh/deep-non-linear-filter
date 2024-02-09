@@ -12,8 +12,14 @@ This repository contains code for the papers
 
 Take a look at a video of our real-time multi-channel enhancement demo: [http://uhh.de/inf-sp-jnf-demo](http://uhh.de/inf-sp-jnf-demo)
 
-## How to train
+## Train JNF with a fixed look direction
 
 1. Prepare a dataset by running ```data_gen_fixed_pos.py```.
+2. Prepare a config file. Examples can be found in the config folder.
+3. Run the training script in the scripts folder (replace the path to your config file). 
+
+## Train steerable JNF-SSF
+
+1. Prepare a dataset by running ```data_gen_var_pos.py```.
 2. Prepare a config file. Examples can be found in the config folder.
 3. Run the training script in the scripts folder (replace the path to your config file). 
