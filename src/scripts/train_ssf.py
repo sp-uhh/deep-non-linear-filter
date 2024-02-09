@@ -1,13 +1,13 @@
 import pytorch_lightning as pl
 from pytorch_lightning import loggers as pl_loggers
 from pytorch_lightning.callbacks import ModelSummary
-from models.exp_jnf import JNFExp
-from models.models import FTJNF
+from models.exp_ssf import SSFExp
+from models.models import JNF_SSF
 from data.datamodule import HDF5DataModule
 from typing import Optional
 import yaml
 
-EXP_NAME='JNF'
+EXP_NAME='JNF-SSF'
 
 def setup_logging(tb_log_dir: str, version_id: Optional[int]= None):
     """
@@ -29,8 +29,8 @@ def setup_logging(tb_log_dir: str, version_id: Optional[int]= None):
 
 def load_model(ckpt_file: str,
                _config):
-    init_params = JNFExp.get_init_params(_config)
-    model = JNFExp.load_from_checkpoint(ckpt_file, **init_params)
+    init_params = SSFExp.get_init_params(_config)
+    model = SSFExp.load_from_checkpoint(ckpt_file, **init_params)
     model.to('cuda')
     return model
 
@@ -38,7 +38,7 @@ def get_trainer(devices, logger, max_epochs, gradient_clip_val, gradient_clip_al
     return pl.Trainer(enable_model_summary=True,
                          logger=logger,
                          devices=devices,
-                         log_every_n_steps=1,
+                         log_every_n_steps=100,
                          max_epochs=max_epochs,
                          gradient_clip_val = gradient_clip_val,
                          gradient_clip_algorithm = gradient_clip_algorithm,
@@ -53,7 +53,7 @@ def get_trainer(devices, logger, max_epochs, gradient_clip_val, gradient_clip_al
 
 if __name__=="__main__":
 
-    with open('config/jnf_config.yaml') as config_file: 
+    with open('config/ssf_config.yaml') as config_file: 
         config = yaml.safe_load(config_file)
 
     ## REPRODUCIBILITY
@@ -70,11 +70,11 @@ if __name__=="__main__":
 
     ## CONFIGURE EXPERIMENT
     ckpt_file = config['training'].get('resume_ckpt', None)
-    if not ckpt_file is None:
+    if ckpt_file is not None:
         exp = load_model(ckpt_file, config)
     else:
-        model = FTJNF(**config['network'])
-        exp = JNFExp(model=model,
+        model = JNF_SSF(**config['network'])
+        exp = SSFExp(model=model,
                     stft_length=stft_length,
                     stft_shift=stft_shift,
                     **config['experiment'])

@@ -1,0 +1,58 @@
+
+seed: 123
+
+data:
+  n_channels: 3
+  batch_size: 6
+  prep_files: {
+                data: ./data/prep/conditional/prep_mix_ch3_sp5_var_target.hdf5,
+                meta: ./data/prep/conditional/prep_mix_meta_ch3_sp5_var_target.json,
+              }
+  dry_target: True
+  snr_range: []
+  meta_frame_length: 48000
+  stft_length_samples: 512
+  stft_shift_samples: 256
+  n_workers: 10
+
+network:
+  n_channels: 3
+  n_lstm_hidden1: 256
+  n_lstm_hidden2: 128
+  n_cond_emb_dim: 180 # 360 / angle_resolution
+  bidirectional: True
+  causal: False
+  output_type: 'CRM'
+  output_activation: 'tanh'
+  condition_nb_only: False
+  condition_wb_only: True
+
+experiment:
+  learning_rate: 0.001
+  weight_decay: 0
+  loss_alpha: 10
+  cirm_comp_K: 1
+  cirm_comp_C: 1
+  reference_channel: 0
+  n_cond_emb_dim: 180 # same as in network settings
+  condition_enc_type: arange
+  cond_arange_params: [-180, 180, 2] # has to match the embedding dim
+  scheduler_type: 'MultiStepLR'
+  scheduler_params: {
+    milestones: [50,100,150,200,250,300,350,400],
+    gamma: 0.75
+  }
+  loss_type: 'l1'
+
+training:
+  max_epochs: 500
+  gradient_clip_val: 0
+  gradient_clip_algorithm: value
+  strategy: ddp
+  accelerator: gpu
+  devices: 1
+
+
+logging:
+  tb_log_dir: "../logs/tb_logs"
+  ckpt_dir: "../logs/ckpts"
